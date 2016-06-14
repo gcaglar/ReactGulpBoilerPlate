@@ -10,4 +10,4 @@ After cloning, run `npm install`.
 
 **Productionize:** `gulp prod`
 
-**Clean:** `rm -rf build`
+**Clean:** `gulp clean`
