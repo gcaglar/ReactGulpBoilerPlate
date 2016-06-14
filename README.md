@@ -11,8 +11,7 @@ Source: https://www.npmjs.com/package/gulp-livereload
 * Install gulp `npm install -g gulp`
 * Install necessary modules (make sure to run at the root of the repo)  `npm install`
 
-**Start developing using** `gulp` It will auto open the browser and refresh it
-with your changes if you have the extension.
+**Start developing:** `gulp` It will auto open the browser and refresh it with your changes if you have the extension.
 
 **Minified version for deployment:** `gulp prod`
 
