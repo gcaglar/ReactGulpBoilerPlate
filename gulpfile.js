@@ -123,7 +123,7 @@ function buildProdScript(file) {
       .pipe(source(file))
       .pipe(streamify(uglify()))
       .pipe(rename("bundle.min.js"))
-      .pipe(gulp.dest('./build/'));
+      .pipe(gulp.dest('./build/public/'));
   }
 
   return rebundle();
@@ -142,7 +142,7 @@ gulp.task('sass-build', function() {
         }))
       .pipe(concatCss('style.min.css'))
       .pipe(minifyCss({compatibility: 'ie8'}))
-      .pipe(gulp.dest('./build/'))
+      .pipe(gulp.dest('./build/public'))
       .pipe(livereload());
 });
 
@@ -152,7 +152,7 @@ gulp.task('replaceHTML', function(){
       'css': 'style.min.css',
       'js': 'bundle.min.js'
     }))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('./build/public/'));
 });
 
 gulp.task('prod', ['build', 'sass-build', 'replaceHTML']);
