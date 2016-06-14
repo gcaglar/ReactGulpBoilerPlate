@@ -1,14 +1,10 @@
-Gulp React boilerplate with Watchify, Browersify, Sass and Livereload
+##Gulp React boilerplate with Watchify, Browersify, Sass and Livereload
 
-Make sure to install live reload chrome extension
-Source:https://www.npmjs.com/package/gulp-livereload
+Install live reload chrome extension if you don't want to manually reload.
+Source: https://www.npmjs.com/package/gulp-livereload
 
+After cloning, run `npm install`.
 
-Development:
-npm run start
-
-Productionize:
-npm run build
-
-Clean:
-npm run clean
+**Development:** `gulp`
+**Productionize:** `gulp prod`
+**Clean:** `rm -rf build`

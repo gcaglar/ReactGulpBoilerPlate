@@ -20,6 +20,11 @@ var minifyCss = require('gulp-minify-css');
 var htmlreplace = require('gulp-html-replace');
 var autoprefixer = require('gulp-autoprefixer');
 
+var express = require('express');
+var fs = require('fs');
+var open = require("open");
+var path = require('path');
+
 function handleErrors() {
   var args = Array.prototype.slice.call(arguments);
   notify.onError({
@@ -57,14 +62,6 @@ function buildWatchScript(file) {
   return rebundle();
 }
 
-gulp.task('server', function (cb) {
-  exec('node server.js', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
-
 gulp.task('copy', function(){
   gulp.src('index.html')
   .pipe(gulp.dest('./build/'));
@@ -88,7 +85,21 @@ gulp.task('watch', function() {
   return buildWatchScript('js/app.js');
 });
 
-gulp.task('default', ['sass', 'watch', 'copy', 'server']);
+gulp.task('server', ['sass', 'watch', 'copy'], function (cb) {
+  var app = express();
+  app.set('port', (process.env.PORT || 3000));
+  app.use(express.static('./build/'));
+
+  const serverPath = 'http://localhost:' + app.get('port') + '/';
+
+  app.listen(app.get('port'), function() {
+    console.log('Server started: ' + serverPath);
+  });
+
+  open(serverPath);
+});
+
+gulp.task('default', ['server']);
 
 
 //
@@ -145,3 +156,7 @@ gulp.task('replaceHTML', function(){
 });
 
 gulp.task('prod', ['build', 'sass-build', 'replaceHTML']);
+
+gulp.task('clean', [], function() {
+  exec('rm -rf build');
+});
