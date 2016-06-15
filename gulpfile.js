@@ -6,7 +6,6 @@ var htmlreplace = require('gulp-html-replace');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var watchify = require('watchify');
-var reactify = require('reactify');
 var streamify = require('gulp-streamify');
 var gutil = require('gulp-util');
 var notify = require('gulp-notify');
@@ -39,7 +38,7 @@ function buildWatchScript(file) {
   var props = {
     entries: [file],
     debug : true,
-    transform: [reactify, babelify]
+    transform: [[babelify, {presets: ["es2015", "react"]} ]]
   };
 
   var bundler = watchify(browserify(props));
@@ -111,7 +110,7 @@ function buildProdScript(file) {
   var props = {
     entries: [file],
     debug : true,
-    transform: [reactify, babelify]
+    transform: [[babelify, {presets: ["es2015", "react"]} ]]
   };
 
   var bundler = browserify(props);

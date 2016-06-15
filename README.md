@@ -1,4 +1,4 @@
-##Gulp React boilerplate with Watchify, Browersify, Sass and Livereload
+##Gulp React boilerplate with React-Bootstrap, Watchify, Browersify, Sass and Livereload
 
 Install live reload chrome extension if you don't want to manually reload.
 

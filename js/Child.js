@@ -1,12 +1,13 @@
 var React = require('react');
-var Child = React.createClass({
-  render: function(){
+
+class Child extends React.Component {
+  render(): ReactElement<any> {
     return (
       <div>
         and this is the best <b>{this.props.name}</b>.
       </div>
-    )
+    );
   }
-});
+};
 
 module.exports = Child;
