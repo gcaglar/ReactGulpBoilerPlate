@@ -4,7 +4,7 @@ var Child =  require('./Child');
 import { Button } from 'react-bootstrap';
 
 class Parent extends React.Component {
-  render(): ReactElement<any> {
+  render() {
     const yay = () => alert('yayyay!');
     return (
       <div>

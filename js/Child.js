@@ -1,7 +1,7 @@
 var React = require('react');
 
 class Child extends React.Component {
-  render(): ReactElement<any> {
+  render() {
     return (
       <div>
         and this is the best <b>{this.props.name}</b>.
